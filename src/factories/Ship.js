@@ -1,16 +1,17 @@
 class Ship {
-    constructor(name, position) {
+    constructor(name, length) {
         this.name = name;
-        this.position = position;
+        this.length = length;
         this.hits = [];
     }
+
     hit(index) {
         this.hits.push(index);
     }
+
     isSunk() {
-        return this.position.every((cell) =>
-            this.hits.includes(cell)
-        );
+        console.log(this)
+        return this.hits.length === this.length
     }
 }
 

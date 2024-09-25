@@ -4,12 +4,12 @@ describe('Ship Functions', () => {
     let testCarrier;
     let testSubmarine;
     beforeEach(() => {
-        testCarrier = new Ship('carrier', [0, 1, 2, 3, 4]);
-        testSubmarine = new Ship('submarine', [12, 13, 14]);
+        testCarrier = new Ship('carrier', 5);
+        testSubmarine = new Ship('submarine', 3);
     });
     test('accepts a hit', () => {
-        testCarrier.hit(0);
-        expect(testCarrier.hits).toEqual([0]);
+        testCarrier.hit(2);
+        expect(testCarrier.hits).toContain(2);
     });
     test('accepts multiple hits', () => {
         testSubmarine.hit(12);
