@@ -26,7 +26,7 @@ describe('Gameboard functions', () => {
     test('creates and initializes a gameboard', () => {
         expect(testBoard).toEqual({
             board: testObjectArray,
-            missedShots: testBooleanArray,
+            isShot: testBooleanArray,
         })
     });
 
@@ -37,7 +37,22 @@ describe('Gameboard functions', () => {
         testObjectArray[3][1] = testShip
         expect(testBoard).toEqual({
             board: testObjectArray,
-            missedShots: testBooleanArray,
+            isShot: testBooleanArray,
         })
+    })
+
+    test('receives attack', () => {
+        testBoard.receiveAttack(3, 3)
+        testBooleanArray[3][3] = true;
+        expect(testBoard).toEqual({
+            board: testObjectArray,
+            isShot: testBooleanArray
+        })
+    })
+
+    test('attack received by correct ship', () => {
+        testBoard.placeShip(testShip, 1, 1, true)
+        testBoard.receiveAttack(1, 1)
+        expect(testShip.hits).toContainEqual([1, 1])
     })
 })

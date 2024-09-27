@@ -10,7 +10,6 @@ class Ship {
     }
 
     isSunk() {
-        console.log(this)
         return this.hits.length === this.length
     }
 }
